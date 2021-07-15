@@ -10,6 +10,7 @@ const UserLogin = () => {
   const dispatch = useDispatch();
 
   const isAuth = useSelector((state) => state.userReducer.isAuth);
+  const loading = useSelector((state) => state.userReducer.loading);
 
   const login = () => {
     const cred = {
@@ -22,7 +23,9 @@ const UserLogin = () => {
     setPassword("");
   };
 
-  return isAuth ? (
+  return loading ? (
+    <h1>Please token</h1>
+  ) : isAuth ? (
     <Redirect to="/profile" />
   ) : (
     <div>

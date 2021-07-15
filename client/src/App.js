@@ -15,6 +15,7 @@ function App() {
   // const user = useSelector((state) => state.userReducer.user);
   // const loading = useSelector((state) => state.userReducer.loading);
   const isAuth = useSelector((state) => state.userReducer.isAuth);
+  const user = useSelector((state) => state.userReducer.user);
   console.log(isAuth);
 
   const getUser = () => {
