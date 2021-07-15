@@ -1,4 +1,7 @@
 import {
+  GET_PROFILE,
+  GET_PROFILE_FAILED,
+  GET_PROFILE_SUCCESS,
   USER_LOGIN,
   USER_LOGIN_FAILED,
   USER_LOGIN_SUCCESS,
@@ -9,12 +12,15 @@ import {
 
 const initialState = {
   loading: false,
+
+  isAuth: false,
 };
 
 const userReducer = (state = initialState, { type, payload }) => {
   switch (type) {
     case USER_REGISTER:
     case USER_LOGIN:
+    case GET_PROFILE:
       return {
         ...state,
         loading: true,
@@ -26,13 +32,22 @@ const userReducer = (state = initialState, { type, payload }) => {
         loading: false,
         msg: payload,
       };
+    case GET_PROFILE_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        user: payload,
+        isAuth: true,
+      };
 
     case USER_REGISTER_FAILED:
     case USER_LOGIN_FAILED:
+    case GET_PROFILE_FAILED:
       return {
         ...state,
         loading: false,
         errors: payload,
+        isAuth: false,
       };
 
     case USER_LOGIN_SUCCESS:

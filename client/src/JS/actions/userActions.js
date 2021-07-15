@@ -1,4 +1,7 @@
 import {
+  GET_PROFILE,
+  GET_PROFILE_FAILED,
+  GET_PROFILE_SUCCESS,
   USER_LOGIN,
   USER_LOGIN_FAILED,
   USER_LOGIN_SUCCESS,
@@ -37,5 +40,25 @@ export const userLogin = (userCred) => async (dispatch) => {
     dispatch({ type: USER_LOGIN_SUCCESS, payload: res.data });
   } catch (error) {
     dispatch({ type: USER_LOGIN_FAILED, payload: error.response.data });
+  }
+};
+
+export const getProfile = () => async (dispatch) => {
+  dispatch({ type: GET_PROFILE });
+
+  const config = {
+    headers: {
+      Authorization: localStorage.getItem("token"),
+    },
+  };
+  console.log(config);
+  try {
+    const res = await axios.get(
+      "http://localhost:7500/user/currentUser",
+      config
+    );
+    dispatch({ type: GET_PROFILE_SUCCESS, payload: res.data });
+  } catch (error) {
+    dispatch({ type: GET_PROFILE_FAILED, payload: error.response.data });
   }
 };

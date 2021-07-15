@@ -9,6 +9,8 @@ const UserLogin = () => {
 
   const dispatch = useDispatch();
 
+  const isAuth = useSelector((state) => state.userReducer.isAuth);
+
   const login = () => {
     const cred = {
       email,
@@ -20,7 +22,7 @@ const UserLogin = () => {
     setPassword("");
   };
 
-  return localStorage.getItem("token") ? (
+  return isAuth ? (
     <Redirect to="/profile" />
   ) : (
     <div>
