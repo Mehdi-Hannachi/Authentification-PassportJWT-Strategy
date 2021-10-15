@@ -32,39 +32,63 @@ const UserRegister = () => {
   return loading ? (
     <h1>Please wait ....</h1>
   ) : (
-    <div>
-      <h1>User Register form</h1>
-      <input
-        type="text"
-        name=""
-        placeholder="FullName"
-        value={fullName}
-        onChange={(e) => setFullName(e.target.value)}
-      />
-      <input
-        type="text"
-        name=""
-        value={email}
-        placeholder="Email"
-        onChange={(e) => setEmail(e.target.value)}
-      />
-      <input
-        type="text"
-        name=""
-        value={adress}
-        placeholder="Adress"
-        onChange={(e) => setAdress(e.target.value)}
-      />
-      <input
-        type="password"
-        name=""
-        value={password}
-        placeholder="Password"
-        onChange={(e) => setPassword(e.target.value)}
-      />
+    <form>
+      <h3>Sign Up</h3>
 
-      <button onClick={() => register()}>Register</button>
-    </div>
+      <div className="form-group">
+        <label>Full name</label>
+        <input
+          type="text"
+          className="form-control"
+          placeholder="FullName"
+          value={fullName}
+          onChange={(e) => setFullName(e.target.value)}
+        />
+      </div>
+
+      <div className="form-group">
+        <label>Email address</label>
+        <input
+          type="email"
+          className="form-control"
+          value={email}
+          placeholder="Email"
+          onChange={(e) => setEmail(e.target.value)}
+        />
+      </div>
+
+      <div className="form-group">
+        <label>Last name</label>
+        <input
+          type="text"
+          className="form-control"
+          value={adress}
+          placeholder="Adress"
+          onChange={(e) => setAdress(e.target.value)}
+        />
+      </div>
+      <div className="form-group">
+        <label>Password</label>
+        <input
+          type="password"
+          className="form-control"
+          value={password}
+          placeholder="Password"
+          onChange={(e) => setPassword(e.target.value)}
+        />
+      </div>
+
+      <button
+        type="submit"
+        className="btn btn-primary btn-block"
+        onClick={() => register()}
+      >
+        Sign Up
+      </button>
+      <p className="forgot-password text-right">
+        Already registered <a href="#">sign in?</a>
+      </p>
+    </form>
   );
 };
 

@@ -30,25 +30,55 @@ const UserLogin = () => {
   ) : isAuth ? (
     <Redirect to="/profile" />
   ) : (
-    <div>
-      <input
-        type="text"
-        name=""
-        value={email}
-        placeholder="Email"
-        onChange={(e) => setEmail(e.target.value)}
-      />
+    <form>
+      <h3>Sign In</h3>
 
-      <input
-        type="password"
-        name=""
-        value={password}
-        placeholder="Password"
-        onChange={(e) => setPassword(e.target.value)}
-      />
+      <div className="form-group">
+        <label>Email address</label>
+        <input
+          type="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          className="form-control"
+          placeholder="Enter email"
+        />
+      </div>
 
-      <button onClick={() => login()}>Login</button>
-    </div>
+      <div className="form-group">
+        <label>Password</label>
+        <input
+          type="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          className="form-control"
+          placeholder="Enter password"
+        />
+      </div>
+
+      <div className="form-group">
+        <div className="custom-control custom-checkbox">
+          <input
+            type="checkbox"
+            className="custom-control-input"
+            id="customCheck1"
+          />
+          <label className="custom-control-label" htmlFor="customCheck1">
+            Remember me
+          </label>
+        </div>
+      </div>
+
+      <button
+        type="submit"
+        onClick={() => login()}
+        className="btn btn-primary btn-block"
+      >
+        Submit
+      </button>
+      <p className="forgot-password text-right">
+        Forgot <a href="#">password?</a>
+      </p>
+    </form>
   );
 };
 
