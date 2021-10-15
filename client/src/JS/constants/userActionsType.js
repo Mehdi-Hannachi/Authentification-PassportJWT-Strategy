@@ -9,3 +9,5 @@ export const USER_LOGIN_FAILED = "USER_LOGIN_FAILED";
 export const GET_PROFILE = "GET_PROFILE";
 export const GET_PROFILE_SUCCESS = "GET_PROFILE_SUCCESS";
 export const GET_PROFILE_FAILED = "GET_PROFILE_FAILED";
+
+export const LOGOUT = "LOGOUT";

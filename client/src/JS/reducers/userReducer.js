@@ -2,6 +2,7 @@ import {
   GET_PROFILE,
   GET_PROFILE_FAILED,
   GET_PROFILE_SUCCESS,
+  LOGOUT,
   USER_LOGIN,
   USER_LOGIN_FAILED,
   USER_LOGIN_SUCCESS,
@@ -56,6 +57,12 @@ const userReducer = (state = initialState, { type, payload }) => {
         loading: false,
         token: payload,
         isAuth: true,
+      };
+
+    case LOGOUT:
+      return {
+        ...state,
+        isAuth: false,
       };
 
     default:

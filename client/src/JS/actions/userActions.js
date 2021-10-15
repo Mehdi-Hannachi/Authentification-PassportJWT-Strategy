@@ -2,6 +2,7 @@ import {
   GET_PROFILE,
   GET_PROFILE_FAILED,
   GET_PROFILE_SUCCESS,
+  LOGOUT,
   USER_LOGIN,
   USER_LOGIN_FAILED,
   USER_LOGIN_SUCCESS,
@@ -10,6 +11,10 @@ import {
   USER_REGISTER_SUCCESS,
 } from "../constants/userActionsType";
 import axios from "axios";
+
+
+
+// User register action creator
 
 export const userRegister = (newUser) => async (dispatch) => {
   dispatch({ type: USER_REGISTER });
@@ -60,5 +65,14 @@ export const getProfile = () => async (dispatch) => {
     dispatch({ type: GET_PROFILE_SUCCESS, payload: res.data });
   } catch (error) {
     dispatch({ type: GET_PROFILE_FAILED, payload: error.response.data });
+  }
+};
+
+export const logout = () => (dispatch) => {
+  dispatch({ type: LOGOUT });
+  try {
+    localStorage.removeItem("token");
+  } catch (error) {
+    console.log(error);
   }
 };
