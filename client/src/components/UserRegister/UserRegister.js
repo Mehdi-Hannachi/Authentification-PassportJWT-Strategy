@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { userRegister } from "../../JS/actions/userActions";
+import { userLogin, userRegister } from "../../JS/actions/userActions";
 
 const UserRegister = () => {
   const [fullName, setFullName] = useState("");
@@ -12,6 +12,7 @@ const UserRegister = () => {
 
   const dispatch = useDispatch();
 
+  // Dispatch usr register action
   const register = () => {
     const newUser = {
       fullName,

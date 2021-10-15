@@ -3,31 +3,23 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
 exports.userRegister = async (req, res) => {
-  console.log("1", req.body);
   const newUser = new User({ ...req.body });
-  console.log("2", newUser);
-
   const email = newUser.email;
-  console.log("3", email);
   const user = await User.findOne({ email });
-
-  console.log("4", user);
 
   if (user) {
     return res.status(401).json({ msg: "user already exist" });
   }
 
   try {
+    // Hashage algorithm complexity
     const salt = await bcrypt.genSalt(10);
+    // Hashed password
     const hash = await bcrypt.hash(newUser.password, salt);
-    console.log("hash :", hash);
-
     newUser.password = hash;
-
     await newUser.save();
     res.status(202).json({ msg: "Register success" });
   } catch (err) {
-    console.error("Register failed", err);
     res.status(402).json({ msg: "Register failed" });
   }
 };
@@ -54,7 +46,6 @@ exports.userLogin = async (req, res) => {
 
     res.status(200).json({ token: `Bearer ${token}` });
   } catch (err) {
-    console.log(err);
     res.status(400).json({ errors: err });
   }
 };

@@ -12,8 +12,6 @@ import {
 } from "../constants/userActionsType";
 import axios from "axios";
 
-
-
 // User register action creator
 
 export const userRegister = (newUser) => async (dispatch) => {
@@ -34,6 +32,8 @@ export const userRegister = (newUser) => async (dispatch) => {
   }
 };
 
+// User login action creator
+
 export const userLogin = (userCred) => async (dispatch) => {
   dispatch({ type: USER_LOGIN });
 
@@ -47,6 +47,8 @@ export const userLogin = (userCred) => async (dispatch) => {
     dispatch({ type: USER_LOGIN_FAILED, payload: error.response.data });
   }
 };
+
+// Check if user is authenticated
 
 export const getProfile = () => async (dispatch) => {
   dispatch({ type: GET_PROFILE });
@@ -67,6 +69,8 @@ export const getProfile = () => async (dispatch) => {
     dispatch({ type: GET_PROFILE_FAILED, payload: error.response.data });
   }
 };
+
+// User logout action creator
 
 export const logout = () => (dispatch) => {
   dispatch({ type: LOGOUT });

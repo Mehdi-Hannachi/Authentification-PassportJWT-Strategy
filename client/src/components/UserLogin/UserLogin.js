@@ -12,6 +12,8 @@ const UserLogin = () => {
   const isAuth = useSelector((state) => state.userReducer.isAuth);
   const loading = useSelector((state) => state.userReducer.loading);
 
+  // Dispatch user login action
+
   const login = () => {
     const cred = {
       email,

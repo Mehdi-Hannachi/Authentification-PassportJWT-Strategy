@@ -1,5 +1,5 @@
 {
-  "name": "ws-auth-mars-f3",
+  "name": "authentification-passportjwt-strategy",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
