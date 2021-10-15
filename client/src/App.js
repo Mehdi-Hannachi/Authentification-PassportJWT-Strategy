@@ -16,13 +16,14 @@ const App = () => {
   console.log(isAuth);
 
   //  Check if user authenticated action
-  const getUser = () => {
-    dispatch(getProfile());
-  };
 
   // Check if user is logged and authenticated since the application is mounted or updated
   useEffect(() => {
+    const getUser = () => {
+      dispatch(getProfile());
+    };
     getUser();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isAuth]);
 
   return (
@@ -58,7 +59,7 @@ const App = () => {
               <ul className="navbar-nav ml-auto">
                 <li className="nav-item">
                   <Link className="nav-link" to={"/login"}>
-                    Login
+                    Sign in
                   </Link>
                 </li>
                 <li className="nav-item">

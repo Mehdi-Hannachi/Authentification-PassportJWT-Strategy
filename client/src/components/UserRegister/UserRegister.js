@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { userLogin, userRegister } from "../../JS/actions/userActions";
+import { Link } from "react-router-dom";
+import { userRegister } from "../../JS/actions/userActions";
+import Loader from "../Loader/Loader";
 
 const UserRegister = () => {
   const [fullName, setFullName] = useState("");
@@ -30,7 +32,7 @@ const UserRegister = () => {
   };
 
   return loading ? (
-    <h1>Please wait ....</h1>
+    <Loader />
   ) : (
     <form>
       <h3>Sign Up</h3>
@@ -86,7 +88,7 @@ const UserRegister = () => {
         Sign Up
       </button>
       <p className="forgot-password text-right">
-        Already registered <a href="#">sign in?</a>
+        Already registered <Link to={`/login`}>sign in? </Link>
       </p>
     </form>
   );

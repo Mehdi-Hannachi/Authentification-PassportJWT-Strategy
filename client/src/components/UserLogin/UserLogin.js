@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { userLogin } from "../../JS/actions/userActions";
 import { Redirect } from "react-router-dom";
+import Loader from "../Loader/Loader";
 
 const UserLogin = () => {
   const [email, setEmail] = useState("");
@@ -26,7 +27,7 @@ const UserLogin = () => {
   };
 
   return loading ? (
-    <h1>Please token</h1>
+    <Loader />
   ) : isAuth ? (
     <Redirect to="/profile" />
   ) : (
@@ -73,11 +74,9 @@ const UserLogin = () => {
         onClick={() => login()}
         className="btn btn-primary btn-block"
       >
-        Submit
+        Sign in
       </button>
-      <p className="forgot-password text-right">
-        Forgot <a href="#">password?</a>
-      </p>
+      <p className="forgot-password text-right">Forgot password?</p>
     </form>
   );
 };
