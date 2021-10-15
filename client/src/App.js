@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, Route } from "react-router-dom";
 import UserProfile from "./components/UserProfile/UserProfile";
 import { getProfile, logout } from "./JS/actions/userActions";
+import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -49,7 +50,7 @@ const App = () => {
 
         <Route exact path="/register" render={() => <UserRegister />} />
         <Route exact path="/login" render={() => <UserLogin />} />
-        <Route exact path="/profile" render={() => <UserProfile />} />
+        <PrivateRoute path="/profile" component={UserProfile} />
       </header>
     </div>
   );
