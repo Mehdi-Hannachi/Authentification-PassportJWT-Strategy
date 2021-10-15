@@ -2,6 +2,8 @@ const User = require("../models/User");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
+/******************************User register********************************* */
+
 exports.userRegister = async (req, res) => {
   const newUser = new User({ ...req.body });
   const email = newUser.email;
@@ -23,6 +25,9 @@ exports.userRegister = async (req, res) => {
     res.status(402).json({ msg: "Register failed" });
   }
 };
+
+/******************************User Login********************************* */
+
 exports.userLogin = async (req, res) => {
   const { email, password } = req.body;
 
@@ -49,3 +54,5 @@ exports.userLogin = async (req, res) => {
     res.status(400).json({ errors: err });
   }
 };
+
+/******************************Reset Password********************************* */
