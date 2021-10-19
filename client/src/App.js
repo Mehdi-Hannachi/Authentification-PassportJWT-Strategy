@@ -5,17 +5,17 @@ import { useEffect } from "react";
 import UserRegister from "./components/UserRegister/UserRegister";
 import UserLogin from "./components/UserLogin/UserLogin";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, Route, Switch } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import UserProfile from "./components/UserProfile/UserProfile";
-import { getProfile, logout } from "./JS/actions/userActions";
+import { getProfile } from "./JS/actions/userActions";
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
+import NavBar from "./components/NavBar/NavBar";
 
 const App = () => {
   const dispatch = useDispatch();
   const isAuth = useSelector((state) => state.userReducer.isAuth);
-  console.log(isAuth);
 
-  //  Check if user authenticated action
+  //  Check if user is authenticate action
 
   // Check if user is logged and authenticated since the application is mounted or updated
   useEffect(() => {
@@ -28,59 +28,13 @@ const App = () => {
 
   return (
     <div className="App">
-      {isAuth ? (
-        <nav className="navbar navbar-expand-lg navbar-light fixed-top">
-          <div className="container">
-            <Link className="navbar-brand" to={"/login"}>
-              Authentification Passport
-            </Link>
-            <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
-              <ul className="navbar-nav ml-auto">
-                <li className="nav-item">
-                  <Link
-                    className="nav-link"
-                    to={"/login"}
-                    onClick={() => dispatch(logout())}
-                  >
-                    LogOut
-                  </Link>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </nav>
-      ) : (
-        <nav className="navbar navbar-expand-lg navbar-light fixed-top">
-          <div className="container">
-            <Link className="navbar-brand" to={"/login"}>
-              Authentification Passport
-            </Link>
-            <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
-              <ul className="navbar-nav ml-auto">
-                <li className="nav-item">
-                  <Link className="nav-link" to={"/login"}>
-                    Sign in
-                  </Link>
-                </li>
-                <li className="nav-item">
-                  <Link className="nav-link" to={"/register"}>
-                    Sign up
-                  </Link>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </nav>
-      )}
-
+      <NavBar />
       <div className="auth-wrapper">
-        <div className="auth-inner">
-          <Switch>
-            <Route exact path="/register" render={() => <UserRegister />} />
-            <Route exact path="/login" render={() => <UserLogin />} />
-            <PrivateRoute path="/profile" component={UserProfile} />
-          </Switch>
-        </div>
+        <Switch>
+          <Route exact path="/register" render={() => <UserRegister />} />
+          <Route exact path="/login" render={() => <UserLogin />} />
+          <PrivateRoute path="/profile" render={() => <UserProfile />} />
+        </Switch>
       </div>
     </div>
   );

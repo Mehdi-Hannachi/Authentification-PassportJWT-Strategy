@@ -13,6 +13,8 @@ exports.userRegister = async (req, res) => {
     return res.status(401).json({ msg: "user already exist" });
   }
 
+  // Upload profil photo
+
   try {
     // Hashage algorithm complexity
     const salt = await bcrypt.genSalt(10);

@@ -1,10 +1,12 @@
+require("dotenv").config({ path: "./config/.env" });
 const express = require("express");
 const connectDB = require("./config/connectDB");
 const user = require("./routes/user");
 const cors = require("cors");
 const app = express();
 app.use(cors());
-require("dotenv").config({ path: "./config/.env" });
+
+// app.use(fileUpload());
 
 // Parse date
 app.use(express.json());
