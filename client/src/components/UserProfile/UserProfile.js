@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 
 const UserProfile = () => {
   const user = useSelector((state) => state.userReducer.user);
+  console.log(user);
   return (
     <div className="auth-wrapper">
       <div className="auth-inner">
@@ -14,10 +15,10 @@ const UserProfile = () => {
             width="150"
           />
           <div className="mt-3">
-            <h4>{user.fullName}</h4>
-            <p className="text-secondary mb-1">{user.email}</p>
+            <h4>{user && user.fullName}</h4>
+            <p className="text-secondary mb-1">{user && user.email}</p>
             <p className="text-secondary mb-1">Full Stack Developer</p>
-            <p className="text-muted font-size-sm">{user.adress}</p>
+            <p className="text-muted font-size-sm">{user && user.adress}</p>
             <button className="btn btn-primary">Follow</button>
             <button className="btn btn-outline-primary">Message</button>
           </div>
